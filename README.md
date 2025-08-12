@@ -9,4 +9,6 @@ coarse-grid screening → local MC → KDE posterior → HPR-based discrete infe
 }
 
 What this repo does?
+
 Uses a continuous-first, discrete-second workflow to reduce error propagation from early misclassification and to handle multi-modal posteriors.
+
