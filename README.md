@@ -4,7 +4,7 @@ coarse-grid screening → local MC → KDE posterior → HPR-based discrete infe
 @article{Your2025InversionModel,
   title={ Hybrid Probabilistic Framework for Mixed Discrete–Continuous Subsurface Parameter Estimation from Multi-Physics Geophysical Data: A Case Study for
  Quantifying the Surface Geofluid Mapping},
-  author={Chunjie ZHANG; Hikaru Iwamori},
+  author={Chunjie Zhang; Hikaru Iwamori},
   year={2025}
 }
 
