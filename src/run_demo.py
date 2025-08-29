@@ -8,15 +8,13 @@ from src import (
     create_results_folder
 )
 
-# 准备 forward-model 依赖的数据表（你自己的路径）
+# prepare forward-model and your data
 dens_file = "package_20210417_forCJ/SEFMO_20210417/dens_fluid.dat"
 dens_table = load_dens_fluid_table(dens_file)
-
-# 观测
 Vp_obs, Vs_obs, EC_obs = 6.12, 3.49, 0.0046
 P_GPa, T_K = 0.20, 465.0
 
-# 先做一个离散边缘化的 grid（小规模演示）
+# magrnilzation discrete 
 df_grid = estimate_marginal_over_discrete(
     Vp_obs, Vs_obs, EC_obs, P_GPa, T_K,
     lambda pars, *args: objective_function(pars, *args, dens_table=dens_table),
@@ -33,3 +31,4 @@ df_best = monte_carlo_map_from_discrete_groups(
     n_samples_per_group=100000
 )
 print(df_best.head())
+
