@@ -14,14 +14,19 @@ dens_table = load_dens_fluid_table(dens_file)
 Vp_obs, Vs_obs, EC_obs = 6.12, 3.49, 0.0046
 P_GPa, T_K = 0.20, 465.0
 
-# magrnilzation discrete 
+# Coarse-grid screening over continuous parameters  
+#n_per_dim is defined the number of coarse grid 
 df_grid = estimate_marginal_over_discrete(
     Vp_obs, Vs_obs, EC_obs, P_GPa, T_K,
     lambda pars, *args: objective_function(pars, *args, dens_table=dens_table),
-    n_per_dim=10
+    n_per_dim=20
 )
 
 outdir = create_results_folder("results_demo")
+
+
+#**Local sampling** using Monte Carlo
+
 df_best = monte_carlo_map_from_discrete_groups(
     df_marginal=df_grid,
     Vp_obs=Vp_obs, Vs_obs=Vs_obs, EC_obs=EC_obs,
@@ -31,4 +36,5 @@ df_best = monte_carlo_map_from_discrete_groups(
     n_samples_per_group=100000
 )
 print(df_best.head())
+
 
